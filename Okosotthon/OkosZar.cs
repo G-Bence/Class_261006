@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Okosotthon
 {
-    internal class OkosZar: OkosEszkoz
+    public class OkosZar: OkosEszkoz
     {
         public OkosZar(string azonosito, string nev, string pinKod)
         : base(azonosito, nev)

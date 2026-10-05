@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Okosotthon
 {
-    internal class OkosotthonKozpont
+    public class OkosotthonKozpont
     {
         public void EszkozHozzaadasa(OkosEszkoz eszkoz)
         {

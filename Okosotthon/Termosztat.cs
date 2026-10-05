@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Okosotthon
 {
-    internal class Termosztat : OkosEszkoz
+    public class Termosztat : OkosEszkoz
     {
         public Termosztat(string azonosito, string nev, double celHomerseklet)
         : base(azonosito, nev)

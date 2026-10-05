@@ -1,10 +1,10 @@
 ﻿namespace Okosotthon
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-//hello
+            //new OkosotthonKozpont();
         }
     }
 }
