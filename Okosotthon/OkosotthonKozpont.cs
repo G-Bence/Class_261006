@@ -37,5 +37,27 @@ namespace Okosotthon
             return sikeresTesztek;
         }
 
+        public void OssszesExtraKepesseg()
+        {
+            foreach (var item in eszkozok)
+            {
+                if(item is IHangjelzo hangjelzo)
+                {
+                    hangjelzo.VeszjelzesInditasa();
+                }
+
+                if(item is IIdozitheto idozitheto)
+                {
+                    idozitheto.IdozitestBeallit(10);
+                }
+
+                if (item is IStatisztika statisztika)
+                {
+                    Console.WriteLine(statisztika.StatisztikatKeszit());
+                }
+
+            }
+        }
+
     }
 }

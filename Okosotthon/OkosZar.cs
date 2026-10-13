@@ -4,11 +4,14 @@ using System.Text;
 
 namespace Okosotthon
 {
-    public class OkosZar: OkosEszkoz
+    public class OkosZar : OkosEszkoz, IHangjelzo, IStatisztika
     {
         public bool ZartE { get; private set; }
         private string pinKod;
         public bool OnlineE { get; private set; }
+
+        private int nyitasokSzama;
+        private int rosszPinkodokSzama;
 
         public OkosZar(string azonosito, string nev, string pinKod)
             : base(azonosito, nev)
@@ -31,6 +34,18 @@ namespace Okosotthon
                 if (megadottPin == this.pinKod)
                 {
                     this.ZartE = false;
+                    this.nyitasokSzama++;
+                    rosszPinkodokSzama = 0;
+                }
+                else if (megadottPin != this.pinKod && rosszPinkodokSzama < 3)
+                {
+                    Console.WriteLine("Hibás PIN kód! A zár nem nyílt ki.");
+                    rosszPinkodokSzama++;
+                }
+                else if (rosszPinkodokSzama >= 3)
+                {
+                    this.VeszjelzesInditasa();
+                    rosszPinkodokSzama++;
                 }
             }
         }
@@ -53,6 +68,19 @@ namespace Okosotthon
             this.ZartE = true;
         }
 
+        public void Csipog(int hosszu)
+        {
+            Console.WriteLine($"*Csipogás {hosszu} másodpercig*");
+        }
 
+        public void VeszjelzesInditasa()
+        {
+            Console.WriteLine("*Vészjelzés indítása*");
+        }
+
+        public string StatisztikatKeszit()
+        {
+            return $"Nyitások száma: {this.nyitasokSzama}, Rossz PIN kódok száma: {this.rosszPinkodokSzama}";
+        }
     }
 }
